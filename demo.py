@@ -29,7 +29,7 @@ if __name__ == '__main__':
     img_height=128
     img_width=416
     ckpt_file = 'ckpt/model-250000'
-    fh = open('data/example.png', 'r')
+    fh = open('data/example.png', 'rb')
     I = pil.open(fh)
     I = I.resize((img_width, img_height), pil.ANTIALIAS)
     I = np.array(I)
