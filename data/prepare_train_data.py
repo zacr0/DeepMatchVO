@@ -29,7 +29,7 @@ def concat_image_seq(seq):
     return res
 
 
-def dump_example(n, is_training):
+def dump_example(n, is_training, args):
     if is_training:
         frame_num = data_loader.num_train
         example = data_loader.get_train_example_with_idx(n)
@@ -119,9 +119,9 @@ def main():
 
 
     if args.generate_test:
-        Parallel(n_jobs=args.num_threads)(delayed(dump_example)(n, is_training=False) for n in range(data_loader.num_test))
+        Parallel(n_jobs=args.num_threads)(delayed(dump_example)(n, is_training=False, args=args) for n in range(data_loader.num_test))
     else:
-        Parallel(n_jobs=args.num_threads)(delayed(dump_example)(n, is_training=True) for n in range(data_loader.num_train))
+        Parallel(n_jobs=args.num_threads)(delayed(dump_example)(n, is_training=True, args=args) for n in range(data_loader.num_train))
         # Split into train/val
         np.random.seed(8964)
         subfolders = os.listdir(args.dump_root)
