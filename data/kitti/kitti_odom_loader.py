@@ -6,7 +6,7 @@ import scipy.misc
 
 CURDIR = os.path.dirname(__file__)
 sys.path.append(os.path.abspath(os.path.join(CURDIR, '..')))
-sys.path.append(os.path.abspath(os.path.join(CURDIR, '...')))
+sys.path.append(os.path.abspath(os.path.join(CURDIR, '../..')))
 from geo_utils import scale_intrinsics
 from common_utils import load_match_func
 from kitti_eval.pose_evaluation_utils import mat2euler
